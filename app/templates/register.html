@@ -2,12 +2,50 @@
 
 {% block content %}
 
+<div class="login-container">
+  <div class="login-container-helper">
+    <div class="login-content">
+      <div class="login-content-helper">
+        <div class="login-content-hello">
+          <h3>Rejestracja</h3>
+          <p>Cieszymy się, że chcesz do nas dołączyć!</p>
+        </div>
+        <form class="login-form" method="POST" action="">
+          {% csrf_token %}
+          <div class="login-form-combo">
+            <input placeholder="Imię i nazwisko" name="name" type="text">
+          </div> 
+          <div class="login-form-combo">
+            <input placeholder="E-mail" type="email" name="email">
+          </div>
+          <div class="login-form-combo">
+            <input placeholder="Hasło" type="password" name="password1">
+          </div>
+          <div class="login-form-combo">
+            <input placeholder="Hasło" type="password" name="password2">
+          </div>
+          <input class="login-form-submit" type="submit" value="Zarejestruj się">
+        </form>
+      </div>
+    </div>
+    <div class="login-content-register">
+      <div class="login-content-register-info">
+        <h1>Masz konto?</h1>
+        <div class="login-content-register-button">
+          <a href="{% url 'login_page' %}">
+            <button>Zaloguj się</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div>
   <form method="POST" action="">
     {% csrf_token %}
 
-    <label for="name">Imię i nazwisko</label>
-    <input name="name" type="text">
+    <input placeholder="Imię i nazwisko" name="name" type="text">
     <label for="email">Email</label>
     <input name="email" type="email">
     <label for="password1">Hasło</label>

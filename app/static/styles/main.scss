@@ -351,6 +351,7 @@ main {
       outline: none;
       border: 3px solid;
       padding: 0.25em 0.5em;
+      
       position: relative;
       user-select: none;
       -webkit-user-select: none;
@@ -499,12 +500,5 @@ main {
         }
       }
     }
-  }
-}
-
-
-@media (min-width: 768px) {
-  .button-54 {
-    padding: 0.25em 0.75em;
   }
 }
