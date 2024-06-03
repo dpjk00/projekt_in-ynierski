@@ -21,6 +21,10 @@ $secondary_font: "Lato", sans-serif;
   margin: 0;
 }
 
+body {
+  overflow: hidden;
+}
+
 .noselect {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -84,8 +88,38 @@ nav {
     width: 50%;
     height: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+  }
+
+  .nav-offer-container-user {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    :hover {
+      background: $primary_color;
+    }
+
+    :hover .drop-holder {
+      display: block;
+    }
+  }
+
+  .wrapper-icon-info {
+    width: 70%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    justify-content: center;
+
+    svg {
+      margin-left: 5px;
+    }
   }
 
   a {
@@ -101,6 +135,33 @@ nav {
 
 }
 
+.drop-holder {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background: $primary-color;
+  left: 0;
+  width: 100%;
+  top: 100%;
+
+  li {
+    position: relative;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  li:last-child {
+    margin-bottom: 10px;
+  }
+
+  li:hover .drop-holder {
+    display: block;
+  }
+}
+
 main {
   width: 100vw;
   min-height: 100vh;
@@ -113,7 +174,6 @@ main {
   width: $main-width;
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -132,7 +192,6 @@ main {
   overflow: hidden;
 
   .card-img {
-    width: calc($main-width / 3.8);
     height: 55%;
     background-position: center;
     background-size: cover;

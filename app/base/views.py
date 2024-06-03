@@ -61,3 +61,10 @@ def home(request):
   context = {'accounts': accounts}
   return render(request, 'home.html', context)
 
+def create_offer(request):
+  context = {}
+  return render(request, 'base/offer.html', context)
+
+
+def account_page(request):
+  return render(request)

@@ -5,6 +5,10 @@
   margin: 0;
 }
 
+body {
+  overflow: hidden;
+}
+
 .noselect {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -64,8 +68,33 @@ nav {
   width: 50%;
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+}
+.nav-offer-container .nav-offer-container-user {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-offer-container .nav-offer-container-user :hover {
+  background: #F7B624;
+}
+.nav-offer-container .nav-offer-container-user :hover .drop-holder {
+  display: block;
+}
+.nav-offer-container .wrapper-icon-info {
+  width: 70%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  justify-content: center;
+}
+.nav-offer-container .wrapper-icon-info svg {
+  margin-left: 5px;
 }
 .nav-offer-container a {
   color: black;
@@ -75,6 +104,30 @@ nav {
 }
 .nav-offer-container a:visited:link {
   color: black;
+}
+
+.drop-holder {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background: #F7B624;
+  left: 0;
+  width: 100%;
+  top: 100%;
+}
+.drop-holder li {
+  position: relative;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.drop-holder li:last-child {
+  margin-bottom: 10px;
+}
+.drop-holder li:hover .drop-holder {
+  display: block;
 }
 
 main {
@@ -89,7 +142,6 @@ main {
   width: 65vw;
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -108,7 +160,6 @@ main {
   overflow: hidden;
 }
 .card .card-img {
-  width: 17.1052631579vw;
   height: 55%;
   background-position: center;
   background-size: cover;
