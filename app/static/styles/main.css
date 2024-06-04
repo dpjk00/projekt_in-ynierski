@@ -6,7 +6,7 @@
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .noselect {
@@ -23,13 +23,19 @@ nav {
   height: 8vh;
   display: flex;
   align-items: center;
+  background: #7524F7;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  opacity: 0.9;
   justify-content: center;
+  box-shadow: inset 0 -2px 0 black;
 }
 
 .main-nav {
   width: 60vw;
   height: 8vh;
-  font-family: "Fredoka", sans-serif;
+  font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: space-between;
 }
@@ -45,14 +51,14 @@ nav {
   align-items: center;
   justify-content: center;
   font-size: 22px;
-  color: black;
+  color: #fff7e6;
 }
 .logo-container .logo-container-p a {
-  color: black;
+  color: #fff7e6;
   text-decoration: none;
 }
 .logo-container .logo-container-p a:visited:link:hover {
-  color: black;
+  color: #fff7e6;
 }
 .logo-container .logo-container-p :hover {
   cursor: pointer;
@@ -63,6 +69,7 @@ nav {
   justify-content: right;
   align-items: center;
   width: 40%;
+  color: #fff7e6;
 }
 .nav-offer-container .nav-offer-container-content {
   width: 50%;
@@ -97,13 +104,13 @@ nav {
   margin-left: 5px;
 }
 .nav-offer-container a {
-  color: black;
+  color: #fff7e6;
   font-size: 18px;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
 }
 .nav-offer-container a:visited:link {
-  color: black;
+  color: #fff7e6;
 }
 
 .drop-holder {
@@ -482,6 +489,80 @@ main {
   box-shadow: 0px 0px 0px 0px;
   top: 5px;
   left: 5px;
+}
+
+.main-container-account {
+  width: 100vw;
+  min-height: 200vh;
+  display: flex;
+}
+
+.main-container-account-left {
+  width: 20%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  font-family: "Roboto", sans-serif;
+}
+
+.main-container-account-controlpanel {
+  width: 50%;
+  min-height: 30px;
+  padding: 10%;
+  position: sticky;
+  border-radius: 1vw;
+  top: 10vh;
+  -webkit-box-shadow: inset 5px 5px 0px 0px;
+  -moz-box-shadow: inset 5px 5px 0px 0px;
+  box-shadow: inset 5px 5px 0px 0px;
+  -webkit-box-shadow: inset -5px -5px 0px 0px;
+  -moz-box-shadow: inset -5px -5px 0px 0px;
+  box-shadow: inset -5px -5px 0px 0px;
+  -webkit-box-shadow: inset 0 0 5px 0px;
+  -moz-box-shadow: inset 0 0 5px 0px;
+  box-shadow: inset 0 0 0 5px #7524F7;
+}
+.main-container-account-controlpanel ul {
+  list-style: none;
+}
+.main-container-account-controlpanel li {
+  margin-top: 10px;
+}
+.main-container-account-controlpanel li li:last-child {
+  margin-bottom: 10%;
+}
+.main-container-account-controlpanel .main-container-account-controlpanel-combo {
+  display: flex;
+  align-items: center;
+}
+.main-container-account-controlpanel .main-container-account-controlpanel-combo p {
+  margin-left: 10px;
+}
+.main-container-account-controlpanel .main-container-account-controlpanel-combo svg {
+  width: 25px;
+  height: 25px;
+}
+.main-container-account-controlpanel a {
+  color: black;
+  text-decoration: none;
+}
+
+br {
+  color: black;
+  width: 100%;
+  height: 1px;
+  display: block;
+}
+
+.main-container-account-main {
+  width: 60%;
+  min-height: 100%;
+}
+
+.main-container-account-right {
+  width: 20%;
+  min-height: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */

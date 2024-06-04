@@ -63,8 +63,8 @@ def home(request):
 
 def create_offer(request):
   context = {}
-  return render(request, 'base/offer.html', context)
+  return render(request, 'offer.html', context)
 
 
 def account_page(request):
-  return render(request)
+  return render(request, 'account.html')
