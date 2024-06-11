@@ -6,10 +6,10 @@
       </div>
     </div>
     <div class="nav-offer-container">
-      <div class="nav-offer-container-content">
-        <a href="{% url 'home' %}">Ogłoszenia</a>
-      </div>
       <div class="nav-offer-container-user">
+        <div class="nav-offer-container-content">
+          <a href="{% url 'home' %}">Ogłoszenia</a>
+        </div>
         <div class="wrapper-icon-info">
           {% if request.user.is_authenticated %}
           <p>{{ request.user.name }}</p>

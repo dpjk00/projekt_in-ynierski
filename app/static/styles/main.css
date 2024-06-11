@@ -7,6 +7,7 @@
 
 body {
   overflow-x: hidden;
+  background: #f2f2f2;
 }
 
 .noselect {
@@ -78,10 +79,10 @@ nav {
   align-items: center;
 }
 .nav-offer-container .nav-offer-container-user {
-  width: 50%;
+  width: 70%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 .nav-offer-container .nav-offer-container-user :hover {
@@ -102,6 +103,9 @@ nav {
 .nav-offer-container .wrapper-icon-info svg {
   margin-left: 5px;
 }
+.nav-offer-container p {
+  font-size: 18px;
+}
 .nav-offer-container a {
   color: #fff7e6;
   font-size: 18px;
@@ -120,6 +124,7 @@ nav {
   left: 0;
   width: 100%;
   top: 100%;
+  font-size: 18px;
 }
 .drop-holder li {
   position: relative;
@@ -142,6 +147,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #f2f2f2;
 }
 
 .main-div {
@@ -186,7 +192,7 @@ main {
   cursor: pointer;
 }
 .card .card-content {
-  background: #d4d4d4;
+  background: white;
   width: 100%;
   height: 45%;
   font-family: "Lato", sans-serif;
@@ -509,17 +515,18 @@ main {
   min-height: 30px;
   padding: 10%;
   position: sticky;
+  background: white;
   border-radius: 1vw;
   top: 7rem;
-  -webkit-box-shadow: inset 5px 5px 0px 0px;
-  -moz-box-shadow: inset 5px 5px 0px 0px;
-  box-shadow: inset 5px 5px 0px 0px;
-  -webkit-box-shadow: inset -5px -5px 0px 0px;
-  -moz-box-shadow: inset -5px -5px 0px 0px;
-  box-shadow: inset -5px -5px 0px 0px;
-  -webkit-box-shadow: inset 0 0 5px 0px;
-  -moz-box-shadow: inset 0 0 5px 0px;
-  box-shadow: inset 0 0 0 5px #7524F7;
+  -webkit-box-shadow: inset 2px 2px 0px 0px;
+  -moz-box-shadow: inset 2px 2px 0px 0px;
+  box-shadow: inset 2px 2px 0px 0px;
+  -webkit-box-shadow: inset -2px -2px 0px 0px;
+  -moz-box-shadow: inset -2px -2px 0px 0px;
+  box-shadow: inset -2px -2px 0px 0px;
+  -webkit-box-shadow: inset 0 0 2px 0px;
+  -moz-box-shadow: inset 0 0 2px 0px;
+  box-shadow: inset 0 0 0 3px #7524F7;
 }
 .main-container-account-controlpanel ul {
   list-style: none;
@@ -538,8 +545,10 @@ main {
   margin-left: 10px;
 }
 .main-container-account-controlpanel .main-container-account-controlpanel-combo svg {
-  width: 25px;
-  height: 25px;
+  min-width: 25px;
+  min-height: 25px;
+  max-width: 25px;
+  max-height: 25px;
 }
 .main-container-account-controlpanel a {
   color: black;
@@ -566,10 +575,10 @@ br {
 }
 
 .account-main-container {
-  width: 90%;
+  width: 100%;
   height: 10rem;
   margin-top: 2rem;
-  border: 2px solid black;
+  background: white;
   display: flex;
 }
 .account-main-container__image-container {
@@ -606,10 +615,82 @@ br {
   justify-content: space-around;
 }
 .account-main-container__info-container__info-wrapper__name {
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+.account-main-container__info-container__info-wrapper p {
+  font-size: 0.9rem;
+  color: #181818;
 }
 .account-main-container__info-container__info-wrapper__contact {
-  color: gray;
+  color: #181818;
+  font-size: 0.9rem;
+}
+
+.account-info-container {
+  width: 100%;
+  height: 500px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
+.account-info-wrapper {
+  width: 90%;
+  height: 90%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+.account-info-wrapper__el {
+  background: #f2f2f2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.account-info-wrapper__el__title-content {
+  width: 100%;
+  height: 25%;
+  background: #F7B624;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+}
+.account-info-wrapper__el__body-content {
+  width: 100%;
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.account-info-wrapper__el__body-content__icon {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffca4e;
+}
+.account-info-wrapper__el__body-content__icon svg {
+  width: 60px;
+}
+.account-info-wrapper__el__body-content__amount {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.account-info-wrapper__el__body-content__amount span {
+  font-size: 45px;
+  color: #7524F7;
+  font-family: "Roboto", sans-serif;
 }
 
 .main-container-account-right {
