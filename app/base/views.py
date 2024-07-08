@@ -3,8 +3,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 
-from .forms import MyUserCreationForm
-from .models import User
+from .forms import MyUserCreationForm, OfferForm
+from .models import User, Post, Image
 # Create your views here.
 
 def register_page(request):
@@ -61,10 +61,48 @@ def home(request):
   context = {'accounts': accounts}
   return render(request, 'home.html', context)
 
-def create_offer(request):
-  context = {}
-  return render(request, 'offer.html', context)
-
-
 def account_page(request):
   return render(request, 'account.html')
+
+def my_offers(request):
+  form = OfferForm()
+  if request.method == 'POST':
+    form = OfferForm(request.POST)
+    if form.is_valid():
+      form.save()
+
+  posts = Post.objects.all()
+  context = {'form': form, 'posts': posts}
+  return render(request, 'myoffers.html', context)
+
+def create_offer(request):
+  form = OfferForm()
+  if request.method == 'POST':
+    form = OfferForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('my_offers_page')
+
+  context = {'form': form}
+  return render(request, 'offer_form.html', context)
+
+
+def update_offer(request, pk):
+  post = Post.objects.get(id = pk)
+  form = OfferForm(instance=post)
+
+  if request.method == 'POST':
+    form = OfferForm(request.POST, instance=post)
+    if form.is_valid():
+      form.save()
+      return redirect('my_offers_page')
+
+  context = {'form': form}
+  return render(request, 'offer_form.html', context)
+
+def delete_offer(request, pk):
+  post = Post.objects.get(id=pk)
+  if request.method == 'POST':
+    post.delete()
+    return redirect('my_offers_page')
+  return render(request, 'delete.html', {'obj': post})

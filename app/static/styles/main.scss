@@ -668,6 +668,7 @@ br {
   height: 10rem;
   margin-top: 2rem;
   background: white;
+  border-radius: 20px;
   display: flex;
 
   &__image-container {
@@ -682,10 +683,13 @@ br {
       height: 7rem;
       border-radius: 100%;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       img {
-        width: 100%;
-        height: 100%;
+        width: 75%;
+        height: 75%;
         object-fit: cover;
       }
     }
@@ -731,12 +735,13 @@ br {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 20px;
   background: white;
 }
 
 .account-info-wrapper {
-  width: 90%;
-  height: 90%;
+  width: 80%;
+  height: 80%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
