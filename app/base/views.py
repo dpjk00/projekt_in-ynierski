@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 from .forms import MyUserCreationForm, OfferForm
 from .models import User, Post, Image
@@ -64,6 +65,7 @@ def home(request):
 def account_page(request):
   return render(request, 'account.html')
 
+@login_required(login_url='/login')
 def my_offers(request):
   form = OfferForm()
   if request.method == 'POST':
@@ -75,6 +77,7 @@ def my_offers(request):
   context = {'form': form, 'posts': posts}
   return render(request, 'myoffers.html', context)
 
+@login_required(login_url='/login')
 def create_offer(request):
   form = OfferForm()
   if request.method == 'POST':
@@ -86,7 +89,7 @@ def create_offer(request):
   context = {'form': form}
   return render(request, 'offer_form.html', context)
 
-
+@login_required(login_url='/login')
 def update_offer(request, pk):
   post = Post.objects.get(id = pk)
   form = OfferForm(instance=post)
@@ -100,9 +103,11 @@ def update_offer(request, pk):
   context = {'form': form}
   return render(request, 'offer_form.html', context)
 
+@login_required(login_url='/login')
 def delete_offer(request, pk):
   post = Post.objects.get(id=pk)
   if request.method == 'POST':
     post.delete()
     return redirect('my_offers_page')
+  
   return render(request, 'delete.html', {'obj': post})
