@@ -71,9 +71,13 @@
     <a href="{% url 'create_offer' %}">Dodaj oferte</a>
     <h1>Moje oferty</h1>
     {% for post in posts %}
+    {% if post.owner.id == request.user.id %}
+      <p>{{ request.user.id }}</p>
       <a href="{% url 'update_offer' post.id %}">Edytuj</a>
       <a href="{% url 'delete_offer' post.id %}">Usuń</a>
+      <p>{{ post.owner.id }}</p>
       <p>{{ post.title }}</p>
+      {% endif %}
     {% endfor %}
   </div>
 </div>

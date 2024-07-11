@@ -16,4 +16,4 @@ class UserForm(ModelForm):
 class OfferForm(ModelForm):
   class Meta:
     model = Post
-    fields = '__all__'
+    fields = ['title', 'description']

@@ -73,18 +73,21 @@ def my_offers(request):
     if form.is_valid():
       form.save()
 
+  users = User.objects.all()
   posts = Post.objects.all()
-  context = {'form': form, 'posts': posts}
+  context = {'form': form, 'posts': posts, 'users': users}
   return render(request, 'myoffers.html', context)
 
 @login_required(login_url='/login')
 def create_offer(request):
   form = OfferForm()
   if request.method == 'POST':
-    form = OfferForm(request.POST)
-    if form.is_valid():
-      form.save()
-      return redirect('my_offers_page')
+    Post.objects.create(
+      owner = request.user,
+      title = request.POST.get('title'),
+      description = request.POST.get('description')
+    )
+    return redirect('my_offers_page')
 
   context = {'form': form}
   return render(request, 'offer_form.html', context)
