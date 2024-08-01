@@ -703,4 +703,45 @@ br {
   min-height: 100%;
 }
 
+.main-container-offers {
+  width: 100vw;
+  display: flex;
+}
+
+.main-offers-mid {
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main-offers-mid__header {
+  width: 90%;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.main-offers-mid__header__wrapper {
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  color: #121212;
+  justify-content: space-between;
+}
+.main-offers-mid__header__wrapper__add {
+  padding: 10px 25px;
+  background: #F7B624;
+  color: #fff7e6;
+  border: 2px solid #121212;
+  outline: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  cursor: pointer;
+}
+.main-offers-mid__header__wrapper__add :hover {
+  background: #121212;
+}
+
 /*# sourceMappingURL=main.css.map */

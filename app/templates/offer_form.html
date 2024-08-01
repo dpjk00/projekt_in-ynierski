@@ -1,12 +1,16 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<div>
-  <form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Dodaj">
-  </form>
+<div class="main-container-offers">
+  {% include 'control_panel.html' %}
+  
+  <div class="main-offers-mid">
+    <form method="POST">
+      {% csrf_token %}
+      {{form.as_p}}
+      <input type="submit" value="Dodaj">
+    </form>
+  </div>
 </div>
 
 {% endblock %}
