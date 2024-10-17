@@ -78,17 +78,40 @@ def my_offers(request):
   context = {'form': form, 'posts': posts, 'users': users}
   return render(request, 'myoffers.html', context)
 
+# @login_required(login_url='/login')
+# def create_offer(request):
+#   form = OfferForm(request.POST, request.FILES)
+#   if request.method == 'POST':
+#     Post.objects.create(
+#       owner = request.user,
+#       title = request.POST.get('title'),
+#       description = request.POST.get('description'),
+#       image = request.FILES.get('image')
+#     )
+#     return redirect('my_offers_page')
+
+#   context = {'form': form}
+#   return render(request, 'offer_form.html', context)
+
 @login_required(login_url='/login')
 def create_offer(request):
-  form = OfferForm()
   if request.method == 'POST':
-    Post.objects.create(
-      owner = request.user,
-      title = request.POST.get('title'),
-      description = request.POST.get('description')
-    )
-    return redirect('my_offers_page')
+      # Pass request.POST and request.FILES to the form to handle file uploads
+      form = OfferForm(request.POST, request.FILES)
+      
+      if form.is_valid():  # Validate the form
+          # Save the form but don't commit yet, so we can add the owner field
+          post = form.save(commit=False)
+          post.owner = request.user  # Add the owner to the Post object
+          post.save()  # Now save the Post object to the database
+          
+          return redirect('my_offers_page')  # Redirect after saving
+  
+  else:
+      # If it's a GET request, display an empty form
+      form = OfferForm()
 
+  # Render the form template with context
   context = {'form': form}
   return render(request, 'offer_form.html', context)
 

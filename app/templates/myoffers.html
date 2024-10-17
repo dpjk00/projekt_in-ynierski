@@ -20,7 +20,13 @@
       <a href="{% url 'delete_offer' post.id %}">Usuń</a>
       <p>{{ post.owner.id }}</p>
       <p>{{ post.title }}</p>
-      {% endif %}
+      <p>{{ post.description }}</p>
+      {% if post.image %}
+        <img src="{{ post.image.url }}"></img>
+      {% else %}
+        <p>No image available for this post.</p>
+      {% endif %}      
+    {% endif %}
     {% endfor %}
   </div>
 </div>

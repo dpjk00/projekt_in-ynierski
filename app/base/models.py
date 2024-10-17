@@ -17,8 +17,9 @@ class User(AbstractUser):
 class Post(models.Model):
   title = models.CharField(max_length=200, null=True)
   description = models.CharField(max_length=2000, null=True)
+  image = models.ImageField(upload_to="images/", null=True, blank=True)
   owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Image(models.Model):
-  image = models.ImageField(upload_to='../images/')
+  image = models.ImageField(upload_to='images/')
   post = models.ForeignKey(Post, related_name='images', on_delete=models.CASCADE)
