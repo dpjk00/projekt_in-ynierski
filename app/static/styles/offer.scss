@@ -1,0 +1,31 @@
+.hidden {
+  display: none;
+}
+
+.image-input-container {
+  margin-bottom: 10px;
+}
+
+.image-preview {
+  width: 100px;
+  height: 100px;
+  border: 2px dashed #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+}
+
+.image-preview span {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.add-offer {
+  margin-top: 60px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}

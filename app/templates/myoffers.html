@@ -16,14 +16,17 @@
     {% for post in posts %}
     {% if post.owner.id == request.user.id %}
       <p>{{ request.user.id }}</p>
-      <a href="{% url 'update_offer' post.id %}">Edytuj</a>
+      <a href="{% url 'update_offer' post.id %}">Idź do</a>
       <a href="{% url 'delete_offer' post.id %}">Usuń</a>
-      <p>{{ post.owner.id }}</p>
+      <p>{{ post.id }}</p>
       <p>{{ post.title }}</p>
       <p>{{ post.description }}</p>
       {% if post.image %}
         <img src="{{ post.image.url }}"></img>
       {% else %}
+      {% for image in post.images.all %}
+        <img src="{{ image.image.url }}" alt="Post image">
+      {% endfor %}
         <p>No image available for this post.</p>
       {% endif %}      
     {% endif %}

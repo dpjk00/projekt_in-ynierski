@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
-from .forms import MyUserCreationForm, OfferForm
+from django.forms import modelformset_factory
+from .forms import MyUserCreationForm, OfferForm, ImageForm
 from .models import User, Post, Image
 # Create your views here.
 
@@ -96,37 +97,61 @@ def my_offers(request):
 @login_required(login_url='/login')
 def create_offer(request):
   if request.method == 'POST':
-      # Pass request.POST and request.FILES to the form to handle file uploads
-      form = OfferForm(request.POST, request.FILES)
+    form = OfferForm(request.POST, request.FILES)
+    
+    if form.is_valid():
+      post = form.save(commit=False)
+      post.owner = request.user
+      post.save()
       
-      if form.is_valid():  # Validate the form
-          # Save the form but don't commit yet, so we can add the owner field
-          post = form.save(commit=False)
-          post.owner = request.user  # Add the owner to the Post object
-          post.save()  # Now save the Post object to the database
-          
-          return redirect('my_offers_page')  # Redirect after saving
+      return redirect('my_offers_page')
   
   else:
-      # If it's a GET request, display an empty form
-      form = OfferForm()
+    form = OfferForm()
 
-  # Render the form template with context
   context = {'form': form}
   return render(request, 'offer_form.html', context)
 
 @login_required(login_url='/login')
 def update_offer(request, pk):
-  post = Post.objects.get(id = pk)
-  form = OfferForm(instance=post)
+  post = get_object_or_404(Post, id=pk)
+  images = Image.objects.filter(post=post)
+
+  form = OfferForm(request.POST or None, instance=post)
+  ImageFormSet = modelformset_factory(Image, form=ImageForm, extra=3)
 
   if request.method == 'POST':
-    form = OfferForm(request.POST, instance=post)
-    if form.is_valid():
-      form.save()
-      return redirect('my_offers_page')
+    formset = ImageFormSet(request.POST, request.FILES, queryset=Image.objects.none())
 
-  context = {'form': form}
+    if form.is_valid() and formset.is_valid():
+      form.save()
+
+      for form in formset.cleaned_data:
+        if form:
+          image = form['image']
+          new_image = Image(post=post, image=image)
+          new_image.save()
+
+      images = Image.objects.filter(post=post) 
+      context = {
+        'form': form,
+        'formset': formset,
+        'post': post,
+        'images': images,
+      }
+
+      return render(request, 'offer_form.html', context)
+
+  else:
+    formset = ImageFormSet(queryset=Image.objects.none())
+
+  context = {
+    'form': form,
+    'formset': formset,
+    'post': post,
+    'images': images,
+  }
+
   return render(request, 'offer_form.html', context)
 
 @login_required(login_url='/login')

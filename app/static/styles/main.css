@@ -744,4 +744,15 @@ br {
   background: #121212;
 }
 
+@media only screen and (min-width: 2500px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+  }
+  .card {
+    width: 13vw;
+    height: 13vw;
+  }
+}
+
 /*# sourceMappingURL=main.css.map */

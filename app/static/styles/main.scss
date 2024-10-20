@@ -854,3 +854,15 @@ br {
     }
   }
 }
+
+@media only screen and (min-width: 2500px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+  }
+
+  .card {
+    width: calc($main-width / 5);
+    height: calc($main-width / 5);
+  }
+}
